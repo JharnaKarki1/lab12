@@ -39,9 +39,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> findByFirstNameContainingIgnoreCase(String name){
-        List<Student> founList = repository.findByFirstNameContainingIgnoreCase(name);
-        System.out.println("fond list -------------");
-        System.out.println(founList);
+        List<Student> foundList = repository.findByFirstNameContainingIgnoreCase(name);
+        System.out.println(foundList);
         return repository.findByFirstNameContainingIgnoreCase(name);
     }
 
