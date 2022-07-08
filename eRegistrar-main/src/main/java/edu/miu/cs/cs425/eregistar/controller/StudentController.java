@@ -13,12 +13,17 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = { "/eRegistrar/student"})
 public class StudentController {
 
-    @Autowired
     private StudentService studentService;
 
-    @GetMapping(value = {"/eRegistrar/student/list"})
+    public StudentController(StudentService studentService) {
+
+        this.studentService = studentService;
+    }
+
+    @GetMapping(value = {"/list"})
     public String home() {
         return "student/list";
     }
@@ -32,11 +37,11 @@ public class StudentController {
 //    }
 
 
-    @GetMapping(value = {"/eRegistrar/student/new"})
-    public String displayNewStudentForm(Model model) {
-        model.addAttribute("student", new Student());
-        return "student/new";
-    }
+//    @GetMapping(value = {"/eRegistrar/student/new"})
+//    public String displayNewStudentForm(Model model) {
+//        model.addAttribute("student", new Student());
+//        return "student/new";
+//    }
 //
 //    @PostMapping(value = {"/eRegistrar/student/new"})
 //    public String addNewStudent(@Valid @ModelAttribute("student") Student student,
@@ -59,16 +64,16 @@ public class StudentController {
 //        return "student/list";
 //    }
 
-    @PostMapping(value = {"/eRegistrar/student/edit"})
-    public String updateStudent(@Valid @ModelAttribute("student") Student student,
-                                BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("errors", bindingResult.getAllErrors());
-            return "student/edit";
-        }
-        student = studentService.saveStudent(student);
-        return "redirect:/eRegistrar/student/list";
-    }
+//    @PostMapping(value = {"/eRegistrar/student/edit"})
+//    public String updateStudent(@Valid @ModelAttribute("student") Student student,
+//                                BindingResult bindingResult, Model model) {
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute("errors", bindingResult.getAllErrors());
+//            return "student/edit";
+//        }
+//        student = studentService.saveStudent(student);
+//        return "redirect:/eRegistrar/student/list";
+//    }
 
    
 
